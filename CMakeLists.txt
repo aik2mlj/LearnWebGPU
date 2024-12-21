@@ -40,6 +40,8 @@ endif()
 if (EMSCRIPTEN)
     # Generate a full web page rather than a simple WebAssembly module
     set_target_properties(App PROPERTIES SUFFIX ".html")
+    # Enable the use of emscripten_sleep()
+    target_link_options(App PRIVATE -sASYNCIFY)
 endif()
 
 # The application's binary must find wgpu.dll or libwgpu.so at runtime,
